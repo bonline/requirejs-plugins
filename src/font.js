@@ -4,7 +4,7 @@
  * Version: 0.2.0 (2011/12/06)
  * Released under the MIT license
  */
-define(['propertyParser'], function (propertyParser) {
+define(['propertyParser', 'webfontloader'], function (propertyParser, WebFont) {
 
     var rParts = /^([^,]+),([^\|]+)\|?/;
 
@@ -34,9 +34,7 @@ define(['propertyParser'], function (propertyParser) {
                 data.inactive = function(){
                     onLoad(false);
                 };
-                req([(document.location.protocol === 'https:'? 'https' : 'http') +'://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js'], function(){
-                    WebFont.load(data);
-                });
+                WebFont.load(data);
             }
         }
 
